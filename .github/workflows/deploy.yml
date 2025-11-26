@@ -20,7 +20,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/node-app
-            git pull origin main || git clone https://github.com/<USER>/<REPO>.git ~/node-app
+            git pull origin main || git clone https://github.com/ManinderMander/my-node-app.git ~/node-app
             npm install
             pm2 restart all || pm2 start server.js --name node-app
 # --- IGNORE ---
