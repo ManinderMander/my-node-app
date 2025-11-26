@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
-
+# --- IGNORE ---
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+#code
     steps:
       - uses: actions/checkout@v3
 
@@ -16,7 +16,7 @@ jobs:
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.SERVER_IP }}
-          username: ubuntu
+          username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/node-app
@@ -24,4 +24,3 @@ jobs:
             npm install
             pm2 restart all || pm2 start server.js --name node-app
 # --- IGNORE ---
-    
